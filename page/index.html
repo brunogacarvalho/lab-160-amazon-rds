@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Lab 160: criação de um banco de dados Amazon RDS para MySQL e integração com uma aplicação web na AWS.">
+  <meta name="theme-color" content="#07111f">
+  <title>Lab 160 | Amazon RDS</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body id="top">
+
+  <header class="hero">
+    <nav class="navbar container" aria-label="Navegação principal">
+      <a href="#top" class="brand">AWS <span>Cloud Labs</span></a>
+      <span class="lab-tag">LAB 160</span>
+    </nav>
+
+    <div class="hero-content container">
+      <span class="eyebrow">ESCOLA DA NUVEM · AWS</span>
+      <h1>Amazon RDS</h1>
+      <p>Criação de um banco de dados relacional gerenciado e integração com uma aplicação web executada no Amazon EC2.</p>
+      <a href="#project" class="hero-button">Conhecer o projeto <span aria-hidden="true">↓</span></a>
+    </div>
+    <div class="hero-decoration" aria-hidden="true"></div>
+  </header>
+
+  <main class="container">
+    <section class="section intro-section" id="project">
+      <span class="section-label">O PROJETO</span>
+      <h2>Um banco de dados gerenciado na nuvem</h2>
+      <p class="section-intro">
+        Neste laboratório, configurei uma instância Amazon RDS para MySQL em uma implantação Multi-AZ
+        e conectei o banco a uma aplicação web hospedada em uma instância EC2. A aplicação Address Book
+        foi utilizada para testar a inclusão, a edição e a remoção de contatos.
+      </p>
+
+      <div class="project-facts">
+        <article class="fact-card">
+          <span class="fact-icon" aria-hidden="true">☁</span>
+          <span class="fact-label">Serviço</span>
+          <strong>Amazon RDS</strong>
+        </article>
+        <article class="fact-card">
+          <span class="fact-icon" aria-hidden="true">▤</span>
+          <span class="fact-label">Mecanismo</span>
+          <strong>MySQL</strong>
+        </article>
+        <article class="fact-card">
+          <span class="fact-icon" aria-hidden="true">◈</span>
+          <span class="fact-label">Implantação</span>
+          <strong>Multi-AZ</strong>
+        </article>
+        <article class="fact-card">
+          <span class="fact-icon" aria-hidden="true">⌘</span>
+          <span class="fact-label">Aplicação</span>
+          <strong>Address Book</strong>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="architecture">
+      <span class="section-label">ARQUITETURA</span>
+      <h2>Como os componentes se conectam</h2>
+      <p class="section-intro">
+        A aplicação web no EC2 acessa o banco RDS pela rede privada da Lab VPC.
+        O Security Group do banco permite conexões MySQL originadas do Web Security Group.
+      </p>
+
+      <div class="architecture" role="img" aria-label="Fluxo da aplicação web no EC2, passando pelo controle de acesso do Security Group, até o Amazon RDS para MySQL">
+        <div class="architecture-box">
+          <span class="architecture-icon" aria-hidden="true">🌐</span>
+          <strong>Aplicação web</strong>
+          <small>Amazon EC2</small>
+          <small>Web Security Group</small>
+        </div>
+        <div class="architecture-arrow" aria-hidden="true">→</div>
+        <div class="architecture-box">
+          <span class="architecture-icon" aria-hidden="true">🛡</span>
+          <strong>Controle de acesso</strong>
+          <small>DB Security Group</small>
+          <small>MySQL · TCP 3306</small>
+        </div>
+        <div class="architecture-arrow" aria-hidden="true">→</div>
+        <div class="architecture-box">
+          <span class="architecture-icon" aria-hidden="true">▤</span>
+          <strong>Banco de dados</strong>
+          <small>Amazon RDS</small>
+          <small>MySQL · Multi-AZ</small>
+        </div>
+      </div>
+      <p class="architecture-note">Representação simplificada da arquitetura implementada no laboratório.</p>
+    </section>
+
+    <section class="section" id="topics">
+      <span class="section-label">CONHECIMENTOS PRATICADOS</span>
+      <h2>O que foi colocado em prática</h2>
+      <div class="topic-grid">
+        <article class="topic-card">
+          <span class="topic-number">01</span>
+          <h3>Amazon RDS e MySQL</h3>
+          <p>Criação e configuração de uma instância de banco de dados relacional gerenciado.</p>
+        </article>
+        <article class="topic-card">
+          <span class="topic-number">02</span>
+          <h3>Alta disponibilidade com Multi-AZ</h3>
+          <p>Configuração de instância principal e instância em espera em Zonas de Disponibilidade diferentes.</p>
+        </article>
+        <article class="topic-card">
+          <span class="topic-number">03</span>
+          <h3>Rede e segurança</h3>
+          <p>Configuração de DB Subnet Group com subnets privadas e controle de conexões por Security Group.</p>
+        </article>
+        <article class="topic-card">
+          <span class="topic-number">04</span>
+          <h3>Conectividade com a aplicação</h3>
+          <p>Uso do endpoint do RDS para conectar a aplicação web ao banco pela porta TCP 3306.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="learning">
+      <span class="section-label">APRENDIZADO</span>
+      <h2>O que aprendi</h2>
+      <div class="learning-panel">
+        <div class="learning-mark" aria-hidden="true">✓</div>
+        <div>
+          <h3>Integração entre aplicação e banco de dados</h3>
+          <p>
+            A prática permitiu compreender como um banco de dados gerenciado pode ser implantado em subnets
+            privadas, protegido por regras de rede e acessado por uma aplicação hospedada no EC2.
+            Também pratiquei a configuração de uma implantação Multi-AZ e a utilização do endpoint
+            para estabelecer a conexão com o RDS.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section flashcards-section" id="flashcards">
+      <span class="section-label">REVISÃO INTERATIVA</span>
+      <h2>Flashcards — Revise o que aprendeu</h2>
+      <p class="section-intro">Teste seus conhecimentos sobre Amazon RDS e a integração com uma aplicação web.</p>
+
+      <div class="flashcard" id="flashcard">
+        <div class="flashcard-topline">
+          <span class="flashcard-label" id="card-side">PERGUNTA</span>
+          <span class="flashcard-counter" id="card-counter">1 de 8</span>
+        </div>
+        <h3 id="card-question">O que é o Amazon RDS?</h3>
+        <div class="flashcard-answer" id="card-answer" hidden>
+          <p id="card-answer-text"></p>
+        </div>
+        <button type="button" class="reveal-button" id="reveal-answer">Revelar resposta</button>
+      </div>
+
+      <div class="flashcard-navigation">
+        <button type="button" id="previous-card" aria-label="Cartão anterior">← Anterior</button>
+        <button type="button" id="next-card" aria-label="Próximo cartão">Próximo →</button>
+      </div>
+    </section>
+
+    <section class="project-link-section">
+      <div>
+        <span class="section-label">DOCUMENTAÇÃO COMPLETA</span>
+        <h2>Veja os detalhes da execução</h2>
+        <p>O README contém o passo a passo do laboratório, as configurações utilizadas e as capturas de tela como evidências da prática.</p>
+      </div>
+      <a class="github-button" href="https://github.com/brunogacarvalho/lab-160-amazon-rds" target="_blank" rel="noopener noreferrer">
+        Ver projeto no GitHub <span aria-hidden="true">↗</span>
+      </a>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>LAB 160 · AMAZON RDS</p>
+    <span>Documentação prática de estudos em AWS</span>
+    <a href="#top">Voltar ao início ↑</a>
+  </footer>
+
+  <script>
+    const flashcards = [
+      {
+        question: "O que é o Amazon RDS?",
+        answer: "Um serviço gerenciado da AWS para criar e operar bancos de dados relacionais."
+      },
+      {
+        question: "Qual mecanismo de banco foi utilizado?",
+        answer: "MySQL, um sistema de gerenciamento de banco de dados relacional."
+      },
+      {
+        question: "O que significa uma implantação Multi-AZ?",
+        answer: "Uma instância principal e outra em espera em Zonas de Disponibilidade diferentes."
+      },
+      {
+        question: "Qual é a função do DB Subnet Group?",
+        answer: "Informar ao RDS quais subnets podem ser utilizadas pelo banco de dados."
+      },
+      {
+        question: "Qual porta foi liberada para o MySQL?",
+        answer: "A porta TCP 3306, permitindo conexões originadas do Web Security Group."
+      },
+      {
+        question: "O que é o endpoint do RDS?",
+        answer: "O endereço utilizado pela aplicação para localizar e conectar-se ao banco."
+      },
+      {
+        question: "Por que o acesso público foi desativado?",
+        answer: "Para manter o banco sem acesso público direto, utilizando a rede privada da VPC."
+      },
+      {
+        question: "Quais operações foram testadas no Address Book?",
+        answer: "Adicionar, editar e remover contatos armazenados no banco RDS."
+      }
+    ];
+
+    let currentCard = 0;
+
+    const questionElement = document.getElementById("card-question");
+    const answerElement = document.getElementById("card-answer");
+    const answerTextElement = document.getElementById("card-answer-text");
+    const counterElement = document.getElementById("card-counter");
+    const sideElement = document.getElementById("card-side");
+    const revealButton = document.getElementById("reveal-answer");
+    const previousButton = document.getElementById("previous-card");
+    const nextButton = document.getElementById("next-card");
+
+    function showCard() {
+      const card = flashcards[currentCard];
+      questionElement.textContent = card.question;
+      answerTextElement.textContent = card.answer;
+      counterElement.textContent = `${currentCard + 1} de ${flashcards.length}`;
+      sideElement.textContent = "PERGUNTA";
+      answerElement.hidden = true;
+      revealButton.hidden = false;
+      previousButton.disabled = currentCard === 0;
+      nextButton.disabled = currentCard === flashcards.length - 1;
+    }
+
+    revealButton.addEventListener("click", () => {
+      answerElement.hidden = false;
+      sideElement.textContent = "RESPOSTA";
+      revealButton.hidden = true;
+    });
+
+    previousButton.addEventListener("click", () => {
+      if (currentCard > 0) {
+        currentCard--;
+        showCard();
+      }
+    });
+
+    nextButton.addEventListener("click", () => {
+      if (currentCard < flashcards.length - 1) {
+        currentCard++;
+        showCard();
+      }
+    });
+
+    showCard();
+  </script>
+</body>
+</html>
