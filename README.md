@@ -236,3 +236,11 @@ Durante esta prática, foram trabalhados os seguintes conhecimentos:
 A página do laboratório também conta com **flashcards interativos** para revisar os principais conceitos e configurações praticadas com o Amazon RDS, incluindo MySQL, Multi-AZ, Security Groups, DB Subnet Groups, armazenamento e integração com a aplicação web.
 
 Página: [Acessar a página do laboratório](https://brunogacarvalho.github.io/lab-160-amazon-rds/)
+
+---
+
+**Professor:** [Raphael Ohlsen](https://www.linkedin.com/in/raphael-ohlsen/)
+
+**Instituição:** [Escola da Nuvem](https://escoladanuvem.org/) | [LinkedIn](https://www.linkedin.com/school/escola-da-nuvem/)
+
+*Laboratório realizado como parte da formação em Computação em Nuvem AWS.*
