@@ -239,8 +239,11 @@ Página: [Acessar a página do laboratório](https://brunogacarvalho.github.io/l
 
 ---
 
-**Professor:** [Raphael Ohlsen](https://www.linkedin.com/in/raphael-ohlsen/)
+## Créditos
 
-**Instituição:** [Escola da Nuvem](https://escoladanuvem.org/) | [LinkedIn](https://www.linkedin.com/school/escola-da-nuvem/)
+Laboratório realizado durante a formação em Computação em Nuvem (AWS re/Start) da **Escola da Nuvem**.
 
-*Laboratório realizado como parte da formação em Computação em Nuvem AWS.*
+- Professor: [Raphael Ohlsen](https://br.linkedin.com/in/raphael-ohlsen)
+- Instituição: [Escola da Nuvem](https://escoladanuvem.org/) | [LinkedIn da Escola da Nuvem](https://www.linkedin.com/school/escola-da-nuvem/)
+
+Laboratório realizado como parte da formação em Computação em Nuvem AWS.
